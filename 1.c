@@ -21,7 +21,6 @@ int main(int argc, char *argv[]) {
   }
 
   int id_len = atoi(argv[2]);
-  printf("%d \n", id_len);
   if (!(id_len < 10)) {
     printf("Id size exceed max allowed (10).");
     return -1;
@@ -78,11 +77,6 @@ int main(int argc, char *argv[]) {
   qsort(group1, line_count, sizeof(int), comp);
   qsort(group2, line_count, sizeof(int), comp);
 
-  for(int i = 0; i < line_count; i++) {
-    printf("%d ", group1[i]);
-    printf("%d \n", group2[i]);
-  }
-
   // compare the arrays, calculate the diff
   int total_diff = 0;
   for(int i = 0; i < line_count; i++) {
@@ -97,6 +91,9 @@ int main(int argc, char *argv[]) {
   // print out the result.
   printf("Done!\n");
   printf("The difference is: %d\n", total_diff);
+
+  free(group1);
+  free(group2);
 
   return 0;
 }
